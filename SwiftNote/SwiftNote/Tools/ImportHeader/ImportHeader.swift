@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 // MARK: - 屏幕尺寸
-let screenWidth = Float(UIScreen.main.bounds.size.width)
-let screenHeight = Float(UIScreen.main.bounds.size.height)
+let screenWidth = (UIScreen.main.bounds.size.width)
+let screenHeight = (UIScreen.main.bounds.size.height)
 
 // MARK: - 系统控件尺寸
 let statusHeight = UIApplication.shared.statusBarFrame.size.height
