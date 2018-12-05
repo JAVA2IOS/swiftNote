@@ -41,8 +41,8 @@ class BookReaderViewController: SNBaseController, UIPageViewControllerDelegate, 
     
     // MARK: - UI
     func configurePageViewController() {
-        let pageVC = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionSpineLocationKey : UIPageViewControllerSpineLocation.min])
-        self.addChildViewController(pageVC)
+        let pageVC = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: convertToOptionalUIPageViewControllerOptionsKeyDictionary([convertFromUIPageViewControllerOptionsKey(UIPageViewController.OptionsKey.spineLocation) : UIPageViewController.SpineLocation.min]))
+        self.addChild(pageVC)
         self.view.addSubview(pageVC.view)
         pageVC.delegate = self
         pageVC.dataSource = self
@@ -108,4 +108,15 @@ class BookReaderViewController: SNBaseController, UIPageViewControllerDelegate, 
         
         return previousVC
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalUIPageViewControllerOptionsKeyDictionary(_ input: [String: Any]?) -> [UIPageViewController.OptionsKey: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIPageViewController.OptionsKey(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIPageViewControllerOptionsKey(_ input: UIPageViewController.OptionsKey) -> String {
+	return input.rawValue
 }
