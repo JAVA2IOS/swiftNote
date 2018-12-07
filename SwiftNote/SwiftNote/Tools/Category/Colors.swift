@@ -84,6 +84,17 @@ extension UIColor {
         return UIColor.CodeColor("F5F5F5")
     }
     
+    /// 随机颜色
+    open class var randomColor : UIColor {
+        get
+        {
+            let red = CGFloat(arc4random() % 256) / 255.0
+            let green = CGFloat(arc4random() % 256) / 255.0
+            let blue = CGFloat(arc4random() % 256) / 255.0
+            return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+        }
+    }
+    
     class func CodeColor(_ color : String) -> UIColor {
         var colorStr = color
         if colorStr.isEmpty {

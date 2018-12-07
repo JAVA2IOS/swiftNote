@@ -68,8 +68,13 @@ class HomeViewController: SNBaseController, UICollectionViewDelegate, UICollecti
         print("\(String(homeModel!.model.homeTitle!))")
         
         switch homeModel!.homeUri as HomePage {
+        case .none:
+            break
         case .iBook:
             self.pushChildController(controllerName: NSStringFromClass(BookReaderViewController.self))
+            break
+        case .news:
+            self.pushChildController(controllerName: NSStringFromClass(OverLayViewController.self))
             break
         }
         

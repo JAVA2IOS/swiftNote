@@ -10,14 +10,19 @@ import UIKit
 
 /// 首页页面标识符
 ///
+/// - none: 无
 /// - iBook: 电子书
+/// - news: 新闻
 enum HomePage {
+    case none
     case iBook
+    case news
 }
 
 /// 首页ViewModel
 class HomeViewModel: NSObject {
     var model : HomeModel!
+    /// 打开的视图类型
     var homeUri : HomePage!
     
     
@@ -28,8 +33,8 @@ class HomeViewModel: NSObject {
 
     class func configureHomeDataSource() -> Array<HomeViewModel> {
         var modelArray = [HomeViewModel]()
-        let titleArray = ["电子书"]
-        let pageArray = [HomePage.iBook]
+        let titleArray = ["电子书", "新闻"]
+        let pageArray = [HomePage.iBook, HomePage.news]
         
         for i in 0..<titleArray.count {
             let tmpViewModel = HomeViewModel.init()

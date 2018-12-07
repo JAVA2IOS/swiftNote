@@ -10,6 +10,7 @@ import UIKit
 
 /// 首页model
 class HomeModel: NSObject {
+    /// 标题
     var homeTitle : String!
     
     override init() {
