@@ -34,11 +34,12 @@ class BookReaderViewController: SNBaseController, UIPageViewControllerDelegate, 
         
         chapterModel = BookChapterModel.init()
         var contentArray = [BookContentModel]()
-        let contents = ["准备工作推荐使用 CocoaPods 安装 Ono 这个三方。如果手动导入的话按照以下步骤就好了下载Ono主分支文件 Ono 下载如果手动导入的话按照以下步骤就好了下载Ono主分支文件 Ono 下载\n这样可以省下很多配置的麻烦。", "如果手动导入的话按照以下步骤就好了下载Ono主分支文件 Ono 下载 ，将下面三个文件导入到工程中：", "公司一直在做一款有许多textFeild需要填写的项目，当填完第一页之后"]
+        let contents = ["这是第一页。\n 想必以前QQ空间的点赞效果大家都知道吧，点赞之后按钮周围会有一圈爆裂的小圆点；还有微信的红包雨表情动画等，以及烟花，火焰效果。这些看似很炫酷的动画可能让我们敬而远之，但是其实iOS封装的很好，利用简单的几行代码就能完成很炫酷的动画效果。由于目前正在玩儿iOS动画的内容，利用iOS的CAEmitterLayer结合CAEmitterCell能够达这些效果。不BB了，先上几个效果图。代码已传githubEmitterAnimation。", "这是第二页\n马丹 有没有办法一次性放很多个gif呀。。。。。。。\nCAEmitterLayer与CAEmitterCell\nCAEmitterLayer是CALayer的一个常用子类,CALayer的子类有很多，如果能很好的使用它们会得到一些意想不到的效果。CAEmitterLayer就是其中之一，CAEmitterLayer是用于实现基于Core Animation的粒子发生器系统。", "这是第三页\n周末闲着无聊，想起最近遇到一个关于文字显示设置的小问题，想着以后可能还会经常用到，所以趁这个时候一起整理一下，方便以后备用"]
 
-        for texts in contents {
+        for i in 0 ..< contents.count {
             let contentModel = BookContentModel.init()
-            contentModel.content = texts
+            contentModel.content = contents[i]
+            contentModel.characterSort = i
             contentArray.append(contentModel)
         }
         
@@ -64,22 +65,53 @@ class BookReaderViewController: SNBaseController, UIPageViewControllerDelegate, 
     
     
     // MARK: - 协议方法
-    func pageViewDataSourceTurnNextPage() -> BookContentModel? {
-        if currentPage >= (chapterModel.contentModels.count - 1) {
+    func pageViewDataSourceTurnNextPage(_ currentModel: BookContentModel?) -> BookContentModel? {
+        if currentModel == nil {
             return nil
         }
-        currentPage += 1
-        return chapterModel.contentModels[currentPage]
+        
+        let sortNumber = (currentModel?.characterSort)! + 1
+        
+        let dataArray : Array = chapterModel.contentModels
+        
+        let filterDatas = dataArray.filter { (currentModel) -> Bool in
+            if currentModel.characterSort == sortNumber {
+                return true
+            }
+            
+            return false
+        }
+        
+        return filterDatas.first
     }
     
-    func pageViewDataSourceTurnPreviousPage() -> BookContentModel? {
-        if currentPage <= 0 {
+    func pageViewDataSourceTurnPreviousPage(_ currentModel: BookContentModel?) -> BookContentModel? {
+        if currentModel == nil {
             return nil
         }
-        currentPage -= 1
-        return chapterModel.contentModels[currentPage]
+        
+        let sortNumber = (currentModel?.characterSort)! - 1
+        
+        let dataArray : Array = chapterModel.contentModels
+        
+        let filterDatas = dataArray.filter { (currentModel) -> Bool in
+            if currentModel.characterSort == sortNumber {
+                return true
+            }
+            
+            return false
+        }
+        
+        return filterDatas.first
     }
     
+    func pageViewDataSourceTransferCompletion(_ completion: Bool) {
+        if completion {
+            print("完成了")
+        }else {
+            print("未完成")
+        }
+    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if Int(scrollView.contentOffset.x) > currentOffset {

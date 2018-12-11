@@ -14,6 +14,9 @@ class BookContentModel: NSObject {
     var characterStart : Int!
     var characterEnd : Int!
     
+    var characterSort : Int!
+    
+    
     var content : String!
     
     override init() {
