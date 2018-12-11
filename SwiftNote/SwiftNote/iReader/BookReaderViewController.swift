@@ -27,11 +27,6 @@ class BookReaderViewController: SNBaseController, UIPageViewControllerDelegate, 
     
     // MARK: - 数据
     func configureBookDatas() {
-
-        pageView = PageView(frame: CGRect(x: 0, y: navHeight, width: screenWidth, height: self.view.frame.size.height - navHeight))
-        self.view.addSubview(pageView)
-        pageView.backgroundColor = .white
-        
         chapterModel = BookChapterModel.init()
         var contentArray = [BookContentModel]()
         let contents = ["这是第一页。\n 想必以前QQ空间的点赞效果大家都知道吧，点赞之后按钮周围会有一圈爆裂的小圆点；还有微信的红包雨表情动画等，以及烟花，火焰效果。这些看似很炫酷的动画可能让我们敬而远之，但是其实iOS封装的很好，利用简单的几行代码就能完成很炫酷的动画效果。由于目前正在玩儿iOS动画的内容，利用iOS的CAEmitterLayer结合CAEmitterCell能够达这些效果。不BB了，先上几个效果图。代码已传githubEmitterAnimation。", "这是第二页\n马丹 有没有办法一次性放很多个gif呀。。。。。。。\nCAEmitterLayer与CAEmitterCell\nCAEmitterLayer是CALayer的一个常用子类,CALayer的子类有很多，如果能很好的使用它们会得到一些意想不到的效果。CAEmitterLayer就是其中之一，CAEmitterLayer是用于实现基于Core Animation的粒子发生器系统。", "这是第三页\n周末闲着无聊，想起最近遇到一个关于文字显示设置的小问题，想着以后可能还会经常用到，所以趁这个时候一起整理一下，方便以后备用"]
@@ -49,8 +44,13 @@ class BookReaderViewController: SNBaseController, UIPageViewControllerDelegate, 
     
     // MARK: - UI
     func configurePageViewController() {
+        pageView = PageView(frame: CGRect(x: 0, y: navHeight, width: screenWidth, height: self.view.frame.size.height - navHeight))
+        self.view.addSubview(pageView)
+        pageView.backgroundColor = .white
         pageView.currentContentModel = chapterModel.contentModels[currentPage]
         pageView.pageDelegate = self
+        pageView.registContainerClass(PageContainer.self)
+        pageView.animated = false
     }
     
     // MARK: - 逻辑
@@ -105,13 +105,15 @@ class BookReaderViewController: SNBaseController, UIPageViewControllerDelegate, 
         return filterDatas.first
     }
     
-    func pageViewDataSourceTransferCompletion(_ completion: Bool) {
-        if completion {
-            print("完成了")
-        }else {
-            print("未完成")
+    func pageViewDataSourceConfigureData(_ currentPageView: UIView, dataModel: BookContentModel?) {
+        if currentPageView.isKind(of: PageContainer.self) {
+            let pageView = currentPageView as! PageContainer
+            pageView.currentPageModel = dataModel
+            pageView.backgroundColor = UIColor.CodeColor("FFDEAD")
         }
     }
+    
+    
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if Int(scrollView.contentOffset.x) > currentOffset {

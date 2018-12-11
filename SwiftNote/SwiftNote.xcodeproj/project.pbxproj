@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F70FE80F21BF90A600796762 /* PageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70FE80E21BF90A600796762 /* PageContainer.swift */; };
 		F75C7AE321B4C2190010E6AD /* BookReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C7AE221B4C2190010E6AD /* BookReaderViewController.swift */; };
 		F75C7AE921B4CD2B0010E6AD /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C7AE821B4CD2B0010E6AD /* HomeModel.swift */; };
 		F75C7AEB21B4CD3D0010E6AD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C7AEA21B4CD3D0010E6AD /* HomeViewModel.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F70FE80E21BF90A600796762 /* PageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContainer.swift; sourceTree = "<group>"; };
 		F75C7AE221B4C2190010E6AD /* BookReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookReaderViewController.swift; sourceTree = "<group>"; };
 		F75C7AE821B4CD2B0010E6AD /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		F75C7AEA21B4CD3D0010E6AD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				F7E7D3E721B91FB000A1F6B9 /* PageView.swift */,
+				F70FE80E21BF90A600796762 /* PageContainer.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				F7E7D3E521B8FB8200A1F6B9 /* OverLayFlowLayout.swift in Sources */,
 				F7F01C6321B1208A00EFAF20 /* UIViewExtension.swift in Sources */,
 				F75C7AEE21B4D5690010E6AD /* HomeCollectionViewCell.swift in Sources */,
+				F70FE80F21BF90A600796762 /* PageContainer.swift in Sources */,
 				F7DC629F214A4939004EF017 /* ViewController.swift in Sources */,
 				F75C7AE321B4C2190010E6AD /* BookReaderViewController.swift in Sources */,
 				F75C7AF421B505B70010E6AD /* BookChapterModel.swift in Sources */,
