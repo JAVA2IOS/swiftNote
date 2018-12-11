@@ -23,6 +23,54 @@ enum GradientLayerDirection {
 }
 
 extension UIView {
+    
+    /// 获取外坐标
+    var qnOrigin : CGPoint {
+        get { return self.frame.origin }
+    }
+    
+    /// 获取视图尺寸
+    var qnSize : CGSize {
+        get { return self.bounds.size }
+    }
+    
+    /// 视图外坐标x
+    var qnOriginX : CGFloat {
+        get { return self.qnOrigin.x }
+    }
+    
+    /// 视图最大x坐标
+    var qnMaxOriginX : CGFloat {
+        get { return self.qnOrigin.x + self.qnBoundsWidth }
+    }
+    
+    /// 视图外坐标y
+    var qnOriginY : CGFloat {
+        get { return self.qnOrigin.y }
+    }
+    
+    /// 视图最大y坐标
+    var qnMaxOriginY : CGFloat {
+        get { return self.qnOriginY + self.qnBoundsHeight }
+    }
+    
+    /// 视图宽度
+    var qnBoundsWidth : CGFloat {
+        get { return self.qnSize.width }
+    }
+    
+    /// 视图高度
+    var qnBoundsHeight : CGFloat {
+        get { return self.qnSize.height }
+    }
+    
+    /// 内坐标
+    var qnBoundsOrigin : CGPoint {
+        get { return self.bounds.origin }
+    }
+    
+    
+    
     /// 添加圆角
     ///
     /// - Parameters:

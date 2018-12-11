@@ -10,8 +10,8 @@ import UIKit
 
 /// 移动的方向
 ///
-/// - forward: 向前滑动
-/// - backward: 向后滑动
+/// - forward: 下一页
+/// - backward: 上一页
 enum movedDirection {
     case forward
     case backward
@@ -40,9 +40,17 @@ class PageView: UIView {
     
     private var attributesDic : Dictionary<String, Any>!
     
-    var contentModel : BookContentModel?
+    var currentContentModel : BookContentModel?
     
-    var pageDelegate : PageViewDataSource!
+    var pageDelegate : PageViewDataSource? {
+        didSet {
+            configureDataSource()
+        }
+    }
+    
+    private var lastContentModel : BookContentModel?
+    
+    private var nextContentModel : BookContentModel?
     
     private var initStatus = false
     
@@ -53,22 +61,44 @@ class PageView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView = UILabel(frame: CGRect(x: 10, y: 10, width: self.bounds.size.width - 20, height: self.bounds.size.height - 20))
+        // 添加子视图
+        configureSubViews()
+        
+        // 添加数据
+//        configureDataSource()
+    }
+    
+    /// 配置子视图
+    private func configureSubViews() {
+        contentView = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width - 0, height: self.bounds.size.height - 0))
         contentView.font = UIFont.systemFont(ofSize: 15)
         contentView.textColor = .red
         contentView.textAlignment = .justified
         contentView.lineBreakMode = .byWordWrapping
         contentView.numberOfLines = 0
+        contentView.backgroundColor = .red
         
         self.addSubview(contentView)
         
-        screenShotView = UIImageView(frame: self.bounds)
-        self.addSubview(screenShotView)
-        self.bringSubviewToFront(screenShotView)
-        screenShotView.alpha = 0
+        lastContentView = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width - 0, height: self.bounds.size.height - 0))
+        lastContentView.font = UIFont.systemFont(ofSize: 15)
+        lastContentView.textColor = .red
+        lastContentView.textAlignment = .justified
+        lastContentView.lineBreakMode = .byWordWrapping
+        lastContentView.numberOfLines = 0
+        lastContentView.alpha = 0
+        lastContentView.backgroundColor = .yellow
         
+        self.addSubview(lastContentView)
+        
+        self.bringSubviewToFront(self.contentView)
     }
     
+    
+    /// 配置文本内容
+    ///
+    /// - Parameter bookModel: 文本内容模型对象
+    /// - Returns: 内容文本
     private func getTextContent(_ bookModel : BookContentModel) -> NSMutableAttributedString {
         let paragraphStyle = NSMutableParagraphStyle.init()
         paragraphStyle.lineSpacing = 10
@@ -76,9 +106,6 @@ class PageView: UIView {
         paragraphStyle.lineHeightMultiple = 1.0
         paragraphStyle.firstLineHeadIndent = 40 // 首行缩进
         
-        if (bookModel == nil) {
-            return NSMutableAttributedString(string: "")
-        }
         let attributedString = NSMutableAttributedString(string: bookModel.content!)
         attributedString.addAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor : UIColor.black, NSAttributedString.Key.paragraphStyle : paragraphStyle], range: NSMakeRange(0, attributedString.string.count))
         
@@ -92,10 +119,10 @@ class PageView: UIView {
         paragraphStyle.lineHeightMultiple = 1.0
         paragraphStyle.firstLineHeadIndent = 40 // 首行缩进
         
-        if (contentModel == nil) {
+        if (currentContentModel == nil) {
             return
         }
-        let attributedString = NSMutableAttributedString(string: contentModel!.content!)
+        let attributedString = NSMutableAttributedString(string: currentContentModel!.content!)
         attributedString.addAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor : UIColor.black, NSAttributedString.Key.paragraphStyle : paragraphStyle], range: NSMakeRange(0, attributedString.string.count))
         
         contentView.attributedText = attributedString
@@ -128,12 +155,8 @@ class PageView: UIView {
     
     /// 配置数据源
     private func configureDataSource() {
-        if direction == .forward {
-            contentModel = pageDelegate.pageViewDataSourceTurnNextPage()
-            configureContent()
-        }else {
-            contentModel = pageDelegate.pageViewDataSourceTurnPreviousPage()!
-        }
+        lastContentModel = pageDelegate?.pageViewDataSourceTurnPreviousPage() ?? nil
+        nextContentModel = pageDelegate?.pageViewDataSourceTurnNextPage() ?? nil
     }
     
     
@@ -141,8 +164,7 @@ class PageView: UIView {
         changeStatus = false
         initStatus = false
         direction = .forward
-        contentScreenShot()
-        screenShotView.alpha = 1
+        lastContentView.alpha = 1
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -154,59 +176,82 @@ class PageView: UIView {
             initStatus = true
             if (lastPoint.x - currentPoint.x) < 0 {
                 direction = .backward
-                screenShotView.frame = CGRect(x: -screenShotView.frame.size.width, y: 0, width: screenShotView.frame.size.width, height: screenShotView.frame.size.height)
-                if lastScreenShotImage != nil {
-                    screenShotView.image = lastScreenShotImage
+                if lastContentModel == nil {
+                    return
                 }
+                // 配置上一页数据
+                lastContentView.frame = CGRect(x: -lastContentView.frame.size.width, y: 0, width: lastContentView.frame.size.width, height: lastContentView.frame.size.height)
+                self.bringSubviewToFront(lastContentView)
             }else {
                 direction = .forward
-                screenShotView.image = currentScreenShotImage
             }
-            
-            configureDataSource()
         }
         
         let distance = currentPoint.x - lastPoint.x
-        let currentOffsetX =  screenShotView.frame.origin.x + distance
         
-        screenShotView.frame = CGRect(x: currentOffsetX, y: 0, width: screenShotView.frame.size.width, height: screenShotView.frame.size.height)
+        if direction == .forward {
+            if nextContentModel == nil {
+                return
+            }
+            let currentOffsetX = contentView.qnOriginX + distance
+            contentView.frame = CGRect(x: currentOffsetX, y: contentView.qnOriginY, width: contentView.qnBoundsWidth, height: contentView.qnBoundsHeight)
+        }else {
+            if lastContentModel == nil {
+                return
+            }
+            let currentOffsetX = lastContentView.qnOriginX + distance
+            lastContentView.frame = CGRect(x: currentOffsetX, y: lastContentView.qnOriginY, width: lastContentView.qnBoundsWidth, height: lastContentView.qnBoundsHeight)
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = (touches as NSSet).anyObject() as! UITouch
-        let currentPoint = touch.location(in: self)
         initStatus = false
         UIView.animate(withDuration: 0.3, animations: {
             if self.direction == .backward {
-                if currentPoint.x > (self.frame.size.width / 2) {
-                    self.screenShotView.frame = self.bounds
+                if self.lastContentModel == nil {
+                    return
+                }
+                if abs(0 - self.lastContentView.qnOriginX) < (self.frame.size.width / 2) {
+                    self.lastContentView.frame = self.bounds
                     self.changeStatus = true
                 }else {
                     self.changeStatus = false
-                    self.screenShotView.frame = CGRect(x: -self.screenShotView.frame.size.width, y: 0, width: self.screenShotView.frame.size.width, height: self.screenShotView.frame.size.height)
+                    self.lastContentView.frame = CGRect(x: -self.lastContentView.qnBoundsWidth, y: self.lastContentView.qnOriginY, width: self.lastContentView.qnBoundsWidth, height: self.lastContentView.qnBoundsHeight)
                 }
             }else {
-                if (self.frame.size.width - currentPoint.x) > (self.frame.size.width / 2) {
+                if self.nextContentModel == nil {
+                    return
+                }
+                if abs(0 - self.contentView.qnOriginX) > (self.frame.size.width / 2) {
                     self.changeStatus = true
-                    self.screenShotView.frame = CGRect(x: -self.screenShotView.frame.size.width, y: 0, width: self.screenShotView.frame.size.width, height: self.screenShotView.frame.size.height)
+                    self.contentView.frame = CGRect(x: -self.contentView.qnBoundsWidth, y: self.contentView.qnOriginY, width: self.contentView.qnBoundsWidth, height: self.contentView.qnBoundsHeight)
                 }else {
-                    self.screenShotView.frame = self.bounds
+                    self.contentView.frame = self.bounds
                     self.changeStatus = false
                 }
             }
         }, completion: { (Bool) in
-            if self.direction == .backward {
-                if self.changeStatus {
-                    self.configureContent()
+            if self.changeStatus {
+                if self.direction == .backward {
+                    if self.lastContentModel == nil {
+                        return
+                    }
+                    self.currentContentModel = self.lastContentModel
+                    self.configureDataSource()
+                }else {
+                    if self.nextContentModel == nil {
+                        return
+                    }
+                    self.currentContentModel = self.nextContentModel
+                    self.configureDataSource()
                 }
             }
             
-            self.screenShotView.alpha = 0
-            self.sendSubviewToBack(self.screenShotView)
-            self.screenShotView.frame = self.bounds
+            self.lastContentView.alpha = 0
+            self.lastContentView.frame = self.bounds
+            self.contentView.frame = self.bounds
+            self.bringSubviewToFront(self.contentView)
             self.direction = .forward
-            
-            self.lastScreenShotImage = self.screenShotView.image
         })
     }
 }

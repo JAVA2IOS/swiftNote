@@ -48,8 +48,7 @@ class BookReaderViewController: SNBaseController, UIPageViewControllerDelegate, 
     
     // MARK: - UI
     func configurePageViewController() {
-        pageView.contentModel = chapterModel.contentModels[currentPage]
-        pageView.configureContent()
+        pageView.currentContentModel = chapterModel.contentModels[currentPage]
         pageView.pageDelegate = self
     }
     

@@ -19,8 +19,6 @@ extension UIViewController {
             let childVCClass = NSClassFromString(controllerName) as! UIViewController.Type
             let childVC = childVCClass.init()
             childVC.hidesBottomBarWhenPushed = true
-            // 截屏
-//            self.view.snapshotView(afterScreenUpdates: false)
             self.navigationController?.pushViewController(childVC, animated: true)
         }
     }
