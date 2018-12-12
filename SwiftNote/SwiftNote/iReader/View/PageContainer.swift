@@ -11,8 +11,7 @@ import UIKit
 /// 页面内容容器
 class PageContainer: UIView {
     
-    var pragraphContents : String?
-    
+    /// 分页模型对象
     var currentPageModel : BookContentModel? {
         didSet {
             self.setNeedsDisplay()
@@ -27,8 +26,6 @@ class PageContainer: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
@@ -49,6 +46,8 @@ class PageContainer: UIView {
         let framesetter = CTFramesetterCreateWithAttributedString(attrString)
         let frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, attrString.length), path, nil)
         
+        CTFrameGetVisibleStringRange(frame)
+        
         // 5
         CTFrameDraw(frame,context!)
     }
@@ -58,18 +57,19 @@ class PageContainer: UIView {
     /// - Parameter bookModel: 文本内容模型对象
     /// - Returns: 内容文本
     private func getTextContent(_ bookModel : BookContentModel?) -> NSMutableAttributedString {
+        let parseStyle = BookPageParseManager.init()
+        parseStyle.contentType = .min
         let paragraphStyle = NSMutableParagraphStyle.init()
-        paragraphStyle.lineSpacing = 10
-        paragraphStyle.paragraphSpacing = 20
-        paragraphStyle.lineHeightMultiple = 1.0
-        paragraphStyle.firstLineHeadIndent = 40 // 首行缩进
+        paragraphStyle.lineSpacing = CGFloat(parseStyle.lineSpaceing)
+        paragraphStyle.paragraphSpacing = CGFloat(parseStyle.lineSpaceing)
+        paragraphStyle.firstLineHeadIndent = CGFloat(parseStyle.lineSpaceing) * 2 // 首行缩进
         
         if bookModel == nil {
             return NSMutableAttributedString(string: "")
         }
         
         let attributedString = NSMutableAttributedString(string: bookModel!.content)
-        attributedString.addAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor : UIColor.black, NSAttributedString.Key.paragraphStyle : paragraphStyle], range: NSMakeRange(0, attributedString.string.count))
+        attributedString.addAttributes([NSAttributedString.Key.font : parseStyle.font, NSAttributedString.Key.foregroundColor : parseStyle.color, NSAttributedString.Key.paragraphStyle : paragraphStyle], range: NSMakeRange(0, attributedString.string.count))
         
         return attributedString
     }

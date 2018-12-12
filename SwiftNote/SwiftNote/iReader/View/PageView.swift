@@ -68,7 +68,7 @@ class PageView: UIView {
     var animated = true
     
     /// 数据源委托对象
-    var pageDelegate : PageViewDataSource? {
+    weak var pageDelegate : PageViewDataSource? {
         didSet {
             configureDataSource()
         }

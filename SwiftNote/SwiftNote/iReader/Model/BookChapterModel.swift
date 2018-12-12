@@ -9,13 +9,20 @@
 import UIKit
 
 class BookChapterModel: NSObject {
-    var chapterId : String!
+    /// 小说id
     var bookId : String!
-    var contentModels : Array<BookContentModel>!
+    /// 章节id
+    var chapterId : String!
+    /// 分页内容
+    var contentModels : Array<BookContentModel>?
     
     override init() {
-        
         super.init()
     }
 
+    
+    /// 更新分页内容样式
+    func updateBookStyle() {
+        
+    }
 }

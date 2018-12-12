@@ -39,6 +39,12 @@ class BookReaderViewController: SNBaseController, UIPageViewControllerDelegate, 
         }
         
         chapterModel.contentModels = contentArray
+        
+//        let mirror = Mirror(reflecting: chapterModel)
+//        
+//        for item in mirror.children {
+//            print("\(item.label)")
+//        }
     }
     
     
@@ -47,7 +53,7 @@ class BookReaderViewController: SNBaseController, UIPageViewControllerDelegate, 
         pageView = PageView(frame: CGRect(x: 0, y: navHeight, width: screenWidth, height: self.view.frame.size.height - navHeight))
         self.view.addSubview(pageView)
         pageView.backgroundColor = .white
-        pageView.currentContentModel = chapterModel.contentModels[currentPage]
+        pageView.currentContentModel = chapterModel.contentModels![currentPage]
         pageView.pageDelegate = self
         pageView.registContainerClass(PageContainer.self)
         pageView.animated = false
@@ -72,7 +78,7 @@ class BookReaderViewController: SNBaseController, UIPageViewControllerDelegate, 
         
         let sortNumber = (currentModel?.characterSort)! + 1
         
-        let dataArray : Array = chapterModel.contentModels
+        let dataArray : Array = chapterModel.contentModels!
         
         let filterDatas = dataArray.filter { (currentModel) -> Bool in
             if currentModel.characterSort == sortNumber {
@@ -92,7 +98,7 @@ class BookReaderViewController: SNBaseController, UIPageViewControllerDelegate, 
         
         let sortNumber = (currentModel?.characterSort)! - 1
         
-        let dataArray : Array = chapterModel.contentModels
+        let dataArray : Array = chapterModel.contentModels!
         
         let filterDatas = dataArray.filter { (currentModel) -> Bool in
             if currentModel.characterSort == sortNumber {
@@ -106,7 +112,7 @@ class BookReaderViewController: SNBaseController, UIPageViewControllerDelegate, 
     }
     
     func pageViewDataSourceConfigureData(_ currentPageView: UIView, dataModel: BookContentModel?) {
-        if currentPageView.isKind(of: PageContainer.self) {
+        if currentPageView is PageContainer {
             let pageView = currentPageView as! PageContainer
             pageView.currentPageModel = dataModel
             pageView.backgroundColor = UIColor.CodeColor("FFDEAD")
@@ -136,12 +142,12 @@ class BookReaderViewController: SNBaseController, UIPageViewControllerDelegate, 
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         let afterPage = currentPage + 1
-        if afterPage >= chapterModel.contentModels.count {
+        if afterPage >= chapterModel.contentModels!.count {
             return nil
         }
 
         let nextVC = BookPageViewController.init()
-        nextVC.contentModel = chapterModel.contentModels[afterPage]
+        nextVC.contentModel = chapterModel.contentModels![afterPage]
         
         return nextVC
     }
@@ -153,7 +159,7 @@ class BookReaderViewController: SNBaseController, UIPageViewControllerDelegate, 
         }
 
         let previousVC = BookPageViewController.init()
-        previousVC.contentModel = chapterModel.contentModels[previousPage]
+        previousVC.contentModel = chapterModel.contentModels![previousPage]
         
         return previousVC
     }

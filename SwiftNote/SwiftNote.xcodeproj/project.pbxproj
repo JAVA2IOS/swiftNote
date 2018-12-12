@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		F70FE80F21BF90A600796762 /* PageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70FE80E21BF90A600796762 /* PageContainer.swift */; };
+		F752B4E321C0A6880081A384 /* BookPageParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752B4E221C0A6880081A384 /* BookPageParseManager.swift */; };
+		F752B4E521C0AD670081A384 /* BookInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752B4E421C0AD670081A384 /* BookInfoModel.swift */; };
+		F752B4E821C0EAF10081A384 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752B4E721C0EAF10081A384 /* LocalStorage.swift */; };
+		F752B4EA21C0ECF70081A384 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752B4E921C0ECF70081A384 /* UserDefaults+Extension.swift */; };
+		F752B4EC21C10D470081A384 /* 蛊真人.txt in Resources */ = {isa = PBXBuildFile; fileRef = F752B4EB21C10D460081A384 /* 蛊真人.txt */; };
 		F75C7AE321B4C2190010E6AD /* BookReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C7AE221B4C2190010E6AD /* BookReaderViewController.swift */; };
 		F75C7AE921B4CD2B0010E6AD /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C7AE821B4CD2B0010E6AD /* HomeModel.swift */; };
 		F75C7AEB21B4CD3D0010E6AD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C7AEA21B4CD3D0010E6AD /* HomeViewModel.swift */; };
@@ -56,6 +61,11 @@
 
 /* Begin PBXFileReference section */
 		F70FE80E21BF90A600796762 /* PageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContainer.swift; sourceTree = "<group>"; };
+		F752B4E221C0A6880081A384 /* BookPageParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPageParseManager.swift; sourceTree = "<group>"; };
+		F752B4E421C0AD670081A384 /* BookInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoModel.swift; sourceTree = "<group>"; };
+		F752B4E721C0EAF10081A384 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		F752B4E921C0ECF70081A384 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		F752B4EB21C10D460081A384 /* 蛊真人.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "蛊真人.txt"; sourceTree = "<group>"; };
 		F75C7AE221B4C2190010E6AD /* BookReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookReaderViewController.swift; sourceTree = "<group>"; };
 		F75C7AE821B4CD2B0010E6AD /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		F75C7AEA21B4CD3D0010E6AD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -116,6 +126,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F752B4E621C0EADB0081A384 /* DataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				F752B4E721C0EAF10081A384 /* LocalStorage.swift */,
+			);
+			path = DataStorage;
+			sourceTree = "<group>";
+		};
 		F75C7AE121B4C1C70010E6AD /* iReader */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +151,8 @@
 			children = (
 				F75C7AF321B505B70010E6AD /* BookChapterModel.swift */,
 				F75C7AF521B505CD0010E6AD /* BookContentModel.swift */,
+				F752B4E221C0A6880081A384 /* BookPageParseManager.swift */,
+				F752B4E421C0AD670081A384 /* BookInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,6 +211,7 @@
 		F7DC629B214A4939004EF017 /* SwiftNote */ = {
 			isa = PBXGroup;
 			children = (
+				F752B4EB21C10D460081A384 /* 蛊真人.txt */,
 				F7E7D3DF21B8FA0400A1F6B9 /* Laboratory */,
 				F75C7AE121B4C1C70010E6AD /* iReader */,
 				F7FF464F214FAF9D0006F939 /* Home */,
@@ -228,6 +249,7 @@
 		F7DC62CA214A4967004EF017 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				F752B4E621C0EADB0081A384 /* DataStorage */,
 				F7DC62DB214A6A37004EF017 /* EnumHeader */,
 				F7DC62CD214A498C004EF017 /* ImportHeader */,
 				F7DC62CC214A4983004EF017 /* Pch */,
@@ -243,6 +265,7 @@
 				F7DC62DE214A6CBD004EF017 /* String+extension.swift */,
 				F76AB3B7214B516D00DDD6C9 /* Colors.swift */,
 				F7F01C6221B1208A00EFAF20 /* UIViewExtension.swift */,
+				F752B4E921C0ECF70081A384 /* UserDefaults+Extension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -437,6 +460,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F752B4EC21C10D470081A384 /* 蛊真人.txt in Resources */,
 				F7DC62A7214A493B004EF017 /* LaunchScreen.storyboard in Resources */,
 				F7DC62A4214A493B004EF017 /* Assets.xcassets in Resources */,
 				F7DC62A2214A4939004EF017 /* Main.storyboard in Resources */,
@@ -465,6 +489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7DC62DF214A6CBD004EF017 /* String+extension.swift in Sources */,
+				F752B4E521C0AD670081A384 /* BookInfoModel.swift in Sources */,
 				F76AB3B8214B516D00DDD6C9 /* Colors.swift in Sources */,
 				F7DC62DA214A6258004EF017 /* MeViewController.swift in Sources */,
 				F7DC62D3214A4BCA004EF017 /* SNTabBarController.swift in Sources */,
@@ -475,6 +500,7 @@
 				F75C7AEE21B4D5690010E6AD /* HomeCollectionViewCell.swift in Sources */,
 				F70FE80F21BF90A600796762 /* PageContainer.swift in Sources */,
 				F7DC629F214A4939004EF017 /* ViewController.swift in Sources */,
+				F752B4E321C0A6880081A384 /* BookPageParseManager.swift in Sources */,
 				F75C7AE321B4C2190010E6AD /* BookReaderViewController.swift in Sources */,
 				F75C7AF421B505B70010E6AD /* BookChapterModel.swift in Sources */,
 				F7FF4651214FAFBB0006F939 /* HomeViewController.swift in Sources */,
@@ -485,7 +511,9 @@
 				F75C7AEB21B4CD3D0010E6AD /* HomeViewModel.swift in Sources */,
 				F7DC629D214A4939004EF017 /* AppDelegate.swift in Sources */,
 				F7E7D3E821B91FB000A1F6B9 /* PageView.swift in Sources */,
+				F752B4E821C0EAF10081A384 /* LocalStorage.swift in Sources */,
 				F75C7AF221B4FDB00010E6AD /* BookPageViewController.swift in Sources */,
+				F752B4EA21C0ECF70081A384 /* UserDefaults+Extension.swift in Sources */,
 				F7E7D3E221B8FA6500A1F6B9 /* OverLayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

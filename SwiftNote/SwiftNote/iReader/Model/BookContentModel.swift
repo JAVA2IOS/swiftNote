@@ -9,14 +9,19 @@
 import UIKit
 
 class BookContentModel: NSObject {
+    /// 小说id
     var bookId : String!
-    var chapterId : String!
-    var characterStart : Int!
-    var characterEnd : Int!
     
+    /// 章节id
+    var chapterId : String!
+    
+    /// 内容范围
+    var location : NSRange = NSMakeRange(0, 0)
+    
+    /// 排列顺序
     var characterSort : Int!
     
-    
+    /// 内容文本
     var content : String!
     
     override init() {
