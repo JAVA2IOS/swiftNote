@@ -10,22 +10,21 @@ import UIKit
 
 class BookInfoModel: NSObject {
     /// 小说id
-    var bookId : String?
+    @objc var bookId : String?
     
     /// 小说名称
-    var bookName : String?
-    
+    @objc var bookName : String?
     
     /// 章节列表
-    var chapterList : Array<BookChapterModel>?
-    
+    @objc var chapterList : Array<BookChapterModel>?
+
     
     // MARK: - 历史记录
     /// 历史章节记录
-    var historyChapter : BookChapterModel?
+    @objc var historyChapter : BookChapterModel?
     
     /// 起始位置记录
-    var location : NSRange = NSMakeRange(0, 0)
+    @objc var location : Int = 0
     
     // MARK: - 书签列表
     
@@ -51,5 +50,9 @@ class BookInfoModel: NSObject {
         }
         
         return bookInfo
+    }
+    
+    override func yy_modelDescription() -> String {
+        return self.yy_modelToJSONString()!
     }
 }

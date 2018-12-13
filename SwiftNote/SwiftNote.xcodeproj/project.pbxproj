@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CBA2B6C90246FE3B89070B6F /* Pods_SwiftNote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DA2DEDB82BD4A6413F4D85 /* Pods_SwiftNote.framework */; };
 		F70FE80F21BF90A600796762 /* PageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70FE80E21BF90A600796762 /* PageContainer.swift */; };
 		F752B4E321C0A6880081A384 /* BookPageParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752B4E221C0A6880081A384 /* BookPageParseManager.swift */; };
 		F752B4E521C0AD670081A384 /* BookInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752B4E421C0AD670081A384 /* BookInfoModel.swift */; };
@@ -21,6 +22,7 @@
 		F75C7AF421B505B70010E6AD /* BookChapterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C7AF321B505B70010E6AD /* BookChapterModel.swift */; };
 		F75C7AF621B505CD0010E6AD /* BookContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C7AF521B505CD0010E6AD /* BookContentModel.swift */; };
 		F76AB3B8214B516D00DDD6C9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76AB3B7214B516D00DDD6C9 /* Colors.swift */; };
+		F7ABF71F21C201E3004716C6 /* NSObject+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ABF71E21C201E3004716C6 /* NSObject+extension.swift */; };
 		F7DC629D214A4939004EF017 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DC629C214A4939004EF017 /* AppDelegate.swift */; };
 		F7DC629F214A4939004EF017 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DC629E214A4939004EF017 /* ViewController.swift */; };
 		F7DC62A2214A4939004EF017 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7DC62A0214A4939004EF017 /* Main.storyboard */; };
@@ -60,6 +62,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D0B55336D5E9670FCDC7FEA /* Pods-SwiftNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNote.debug.xcconfig"; path = "Target Support Files/Pods-SwiftNote/Pods-SwiftNote.debug.xcconfig"; sourceTree = "<group>"; };
+		E6D775AE67A1B30937323037 /* Pods-SwiftNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNote.release.xcconfig"; path = "Target Support Files/Pods-SwiftNote/Pods-SwiftNote.release.xcconfig"; sourceTree = "<group>"; };
+		E7DA2DEDB82BD4A6413F4D85 /* Pods_SwiftNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F70FE80E21BF90A600796762 /* PageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContainer.swift; sourceTree = "<group>"; };
 		F752B4E221C0A6880081A384 /* BookPageParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPageParseManager.swift; sourceTree = "<group>"; };
 		F752B4E421C0AD670081A384 /* BookInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoModel.swift; sourceTree = "<group>"; };
@@ -74,6 +79,7 @@
 		F75C7AF321B505B70010E6AD /* BookChapterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookChapterModel.swift; sourceTree = "<group>"; };
 		F75C7AF521B505CD0010E6AD /* BookContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookContentModel.swift; sourceTree = "<group>"; };
 		F76AB3B7214B516D00DDD6C9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		F7ABF71E21C201E3004716C6 /* NSObject+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+extension.swift"; sourceTree = "<group>"; };
 		F7DC6299214A4939004EF017 /* SwiftNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7DC629C214A4939004EF017 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7DC629E214A4939004EF017 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBA2B6C90246FE3B89070B6F /* Pods_SwiftNote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +133,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		929A1F5155B86A7346F13F39 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E7DA2DEDB82BD4A6413F4D85 /* Pods_SwiftNote.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB5D5A00CE19DB8DD7CE6E88 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0D0B55336D5E9670FCDC7FEA /* Pods-SwiftNote.debug.xcconfig */,
+				E6D775AE67A1B30937323037 /* Pods-SwiftNote.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F752B4E621C0EADB0081A384 /* DataStorage */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +219,8 @@
 				F7DC62B0214A493C004EF017 /* SwiftNoteTests */,
 				F7DC62BB214A493C004EF017 /* SwiftNoteUITests */,
 				F7DC629A214A4939004EF017 /* Products */,
+				EB5D5A00CE19DB8DD7CE6E88 /* Pods */,
+				929A1F5155B86A7346F13F39 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -266,6 +292,7 @@
 				F76AB3B7214B516D00DDD6C9 /* Colors.swift */,
 				F7F01C6221B1208A00EFAF20 /* UIViewExtension.swift */,
 				F752B4E921C0ECF70081A384 /* UserDefaults+Extension.swift */,
+				F7ABF71E21C201E3004716C6 /* NSObject+extension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -362,9 +389,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7DC62C1214A493C004EF017 /* Build configuration list for PBXNativeTarget "SwiftNote" */;
 			buildPhases = (
+				FB081A96B14264085B7D1E05 /* [CP] Check Pods Manifest.lock */,
 				F7DC6295214A4939004EF017 /* Sources */,
 				F7DC6296214A4939004EF017 /* Frameworks */,
 				F7DC6297214A4939004EF017 /* Resources */,
+				EF1C34810775B383118F7DB9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -483,6 +512,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		EF1C34810775B383118F7DB9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftNote/Pods-SwiftNote-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftNote/Pods-SwiftNote-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB081A96B14264085B7D1E05 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftNote-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F7DC6295214A4939004EF017 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -499,6 +577,7 @@
 				F7F01C6321B1208A00EFAF20 /* UIViewExtension.swift in Sources */,
 				F75C7AEE21B4D5690010E6AD /* HomeCollectionViewCell.swift in Sources */,
 				F70FE80F21BF90A600796762 /* PageContainer.swift in Sources */,
+				F7ABF71F21C201E3004716C6 /* NSObject+extension.swift in Sources */,
 				F7DC629F214A4939004EF017 /* ViewController.swift in Sources */,
 				F752B4E321C0A6880081A384 /* BookPageParseManager.swift in Sources */,
 				F75C7AE321B4C2190010E6AD /* BookReaderViewController.swift in Sources */,
@@ -687,6 +766,7 @@
 		};
 		F7DC62C2214A493C004EF017 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D0B55336D5E9670FCDC7FEA /* Pods-SwiftNote.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -706,6 +786,7 @@
 		};
 		F7DC62C3214A493C004EF017 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6D775AE67A1B30937323037 /* Pods-SwiftNote.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

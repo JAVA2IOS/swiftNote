@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+@_exported import YYModel
+@_exported import SwiftyJSON
+
 // MARK: - 屏幕尺寸
 let screenWidth = (UIScreen.main.bounds.size.width)
 let screenHeight = (UIScreen.main.bounds.size.height)

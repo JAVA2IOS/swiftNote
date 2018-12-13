@@ -35,16 +35,11 @@ class BookReaderViewController: SNBaseController, UIPageViewControllerDelegate, 
             let contentModel = BookContentModel.init()
             contentModel.content = contents[i]
             contentModel.characterSort = i
+            contentModel.location = 10 * i
             contentArray.append(contentModel)
         }
         
         chapterModel.contentModels = contentArray
-        
-//        let mirror = Mirror(reflecting: chapterModel)
-//        
-//        for item in mirror.children {
-//            print("\(item.label)")
-//        }
     }
     
     

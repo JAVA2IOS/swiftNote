@@ -14,7 +14,7 @@ import UIKit
 /// - middle: 中等
 /// - normal: 正常
 /// - large: 最大
-enum pageContentStyle {
+@objc enum pageContentStyle : Int {
     case min
     case middle
     case normal
@@ -26,25 +26,44 @@ enum pageContentStyle {
 class BookPageParseManager: NSObject {
     
     /// 字体大小
-    var font = UIFont.systemFont(ofSize: 12)
+    @objc var font : Int = 12
     
     /// 字体颜色
-    var color = UIColor.deepGrayColor()
+    @objc var color : String = "878D94"
     
     /// 行间间距
-    var lineSpaceing = 12.0
+    @objc var lineSpaceing : Float = 12.0
+    
+    /// 每页的字数
+    @objc var pageSize : Int = 100
     
     /// 样式类型
-    var contentType : pageContentStyle = .normal {
+    @objc var contentType : pageContentStyle = .normal {
         didSet {
             configurePageViewStyle(contentType)
         }
     }
     
-
-    override init() {
+    /// 单例变量
+    static let sharedInstance = BookPageParseManager()
+    
+    private override init() {
         super.init()
-        configurePageViewStyle(contentType)
+        let cachedLocalData = UserDefaults.iBook.valueFromStore(.book)
+
+        if cachedLocalData != nil {
+            print("有数据，直接拿取, \(cachedLocalData!)")
+            let dic = cachedLocalData as! Dictionary<String, Any>
+            contentType = pageContentStyle(rawValue: dic["contentType"] as! Int)!
+            font = dic["font"] as! Int
+            color = dic["color"] as! String
+            lineSpaceing = dic["lineSpaceing"] as! Float
+            pageSize = dic["pageSize"] as! Int
+        }else {
+            print("未存在数据，缓存数据")
+            configurePageViewStyle(contentType)
+            UserDefaults.iBook.store(self.yy_modelToJSONObject(), for: .book)
+        }
     }
 
     /// 配置文本样式
@@ -67,31 +86,35 @@ class BookPageParseManager: NSObject {
         }
     }
     
+    /// 缓存本地
+    func cacheInLocal() {
+    }
+    
     /// 配置最小文本样式
     func configureMinPageViewStyle() {
-        font = UIFont.init(name: "ArialMT", size: 12)!
-        color = UIColor.deepGrayColor()
+//        font = UIFont.init(name: "ArialMT", size: 12)!
+        font = 12
         lineSpaceing = 12
     }
     
     /// 配置中等文本样式
     func configureMiddlePageViewStyle() {
-        font = UIFont.init(name: "ArialMT", size: 14)!
-        color = UIColor.deepGrayColor()
+//        font = UIFont.init(name: "ArialMT", size: 14)!
+        font = 14
         lineSpaceing = 14
     }
     
     /// 配置正常文本样式
     func configureNormalPageViewStyle() {
-        font = UIFont.init(name: "ArialMT", size: 16)!
-        color = UIColor.deepGrayColor()
+//        font = UIFont.init(name: "ArialMT", size: 16)!
+        font = 16
         lineSpaceing = 16
     }
     
     /// 配置最大文本样式
     func configureLargePageViewStyle() {
-        font = UIFont.init(name: "ArialMT", size: 18)!
-        color = UIColor.deepGrayColor()
+//        font = UIFont.init(name: "ArialMT", size: 18)!
+        font = 18
         lineSpaceing = 18
     }
     

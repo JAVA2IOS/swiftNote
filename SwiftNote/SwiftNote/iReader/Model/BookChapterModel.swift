@@ -10,11 +10,11 @@ import UIKit
 
 class BookChapterModel: NSObject {
     /// 小说id
-    var bookId : String!
+    @objc var bookId : String!
     /// 章节id
-    var chapterId : String!
+    @objc var chapterId : String!
     /// 分页内容
-    var contentModels : Array<BookContentModel>?
+    @objc var contentModels : Array<BookContentModel>?
     
     override init() {
         super.init()
@@ -24,5 +24,9 @@ class BookChapterModel: NSObject {
     /// 更新分页内容样式
     func updateBookStyle() {
         
+    }
+    
+    override func yy_modelDescription() -> String {
+        return self.yy_modelToJSONString()!
     }
 }

@@ -57,19 +57,20 @@ class PageContainer: UIView {
     /// - Parameter bookModel: 文本内容模型对象
     /// - Returns: 内容文本
     private func getTextContent(_ bookModel : BookContentModel?) -> NSMutableAttributedString {
-        let parseStyle = BookPageParseManager.init()
-        parseStyle.contentType = .min
+        let parseStyle = BookPageParseManager.sharedInstance
         let paragraphStyle = NSMutableParagraphStyle.init()
         paragraphStyle.lineSpacing = CGFloat(parseStyle.lineSpaceing)
         paragraphStyle.paragraphSpacing = CGFloat(parseStyle.lineSpaceing)
         paragraphStyle.firstLineHeadIndent = CGFloat(parseStyle.lineSpaceing) * 2 // 首行缩进
+        let font = UIFont(name: "ArialMT", size: CGFloat(parseStyle.font))
+        
         
         if bookModel == nil {
             return NSMutableAttributedString(string: "")
         }
         
         let attributedString = NSMutableAttributedString(string: bookModel!.content)
-        attributedString.addAttributes([NSAttributedString.Key.font : parseStyle.font, NSAttributedString.Key.foregroundColor : parseStyle.color, NSAttributedString.Key.paragraphStyle : paragraphStyle], range: NSMakeRange(0, attributedString.string.count))
+        attributedString.addAttributes([NSAttributedString.Key.font : font!, NSAttributedString.Key.foregroundColor : UIColor.CodeColor(parseStyle.color), NSAttributedString.Key.paragraphStyle : paragraphStyle], range: NSMakeRange(0, attributedString.string.count))
         
         return attributedString
     }

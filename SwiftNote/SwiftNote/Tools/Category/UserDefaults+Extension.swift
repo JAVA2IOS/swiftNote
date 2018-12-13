@@ -22,8 +22,7 @@ extension UserDefaultsSettable where storageKeys.RawValue == String {
     static func store(_ value : Any?, for key: storageKeys) -> Void {
         let storeKey = "\(Self.self)_" + key.rawValue
         
-        print("缓存的键名 : \(storeKey)")
-        UserDefaults.standard.set(value, forKey: key.rawValue)
+        UserDefaults.standard.set(value, forKey: storeKey)
     }
     
     
@@ -32,7 +31,9 @@ extension UserDefaultsSettable where storageKeys.RawValue == String {
     /// - Parameter key: 键名
     /// - Returns: 值
     static func valueFromStore(_ key : storageKeys) -> Any? {
-        return  UserDefaults.standard.value(forKey: key.rawValue)
+        let storeKey = "\(Self.self)_" + key.rawValue
+
+        return  UserDefaults.standard.value(forKey: storeKey)
     }
 }
 
@@ -40,6 +41,7 @@ extension UserDefaults {
     struct iBook : UserDefaultsSettable {
         enum storageKeys : String {
             case book
+            case chapter
         }
     }
 }

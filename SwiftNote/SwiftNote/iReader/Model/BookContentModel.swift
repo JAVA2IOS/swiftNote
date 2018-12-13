@@ -10,23 +10,26 @@ import UIKit
 
 class BookContentModel: NSObject {
     /// 小说id
-    var bookId : String!
+    @objc var bookId : String!
     
     /// 章节id
-    var chapterId : String!
+    @objc var chapterId : String!
     
     /// 内容范围
-    var location : NSRange = NSMakeRange(0, 0)
+    @objc var location : Int = 0
     
     /// 排列顺序
-    var characterSort : Int!
+    @objc var characterSort : Int = 0
     
     /// 内容文本
-    var content : String!
+    @objc var content : String!
     
     override init() {
         
         super.init()
     }
 
+    override func yy_modelDescription() -> String {
+        return self.yy_modelToJSONString()!
+    }
 }
