@@ -19,6 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = tabVC
         self.window?.makeKeyAndVisible()
         
+        let filePath = CZTools.fileMainBundleSearchFilePath("hello.txt")
+        if CZTools.fileCopyToSanBoxDocumentsPath(filePath) {
+            print("拷贝到沙盒文件成功")
+        } else {
+            print("拷贝文件失败")
+        }
+        
         return true
     }
 

@@ -40,8 +40,10 @@ extension UserDefaultsSettable where storageKeys.RawValue == String {
 extension UserDefaults {
     struct iBook : UserDefaultsSettable {
         enum storageKeys : String {
-            case book
+            case bookStyle
             case chapter
+            case bookRemarks
+            case books
         }
     }
 }

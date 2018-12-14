@@ -49,10 +49,9 @@ class BookPageParseManager: NSObject {
     
     private override init() {
         super.init()
-        let cachedLocalData = UserDefaults.iBook.valueFromStore(.book)
+        let cachedLocalData = UserDefaults.iBook.valueFromStore(.bookStyle)
 
         if cachedLocalData != nil {
-            print("有数据，直接拿取, \(cachedLocalData!)")
             let dic = cachedLocalData as! Dictionary<String, Any>
             contentType = pageContentStyle(rawValue: dic["contentType"] as! Int)!
             font = dic["font"] as! Int
@@ -60,9 +59,8 @@ class BookPageParseManager: NSObject {
             lineSpaceing = dic["lineSpaceing"] as! Float
             pageSize = dic["pageSize"] as! Int
         }else {
-            print("未存在数据，缓存数据")
             configurePageViewStyle(contentType)
-            UserDefaults.iBook.store(self.yy_modelToJSONObject(), for: .book)
+            UserDefaults.iBook.store(self.yy_modelToJSONObject(), for: .bookStyle)
         }
     }
 
@@ -127,11 +125,23 @@ class BookPageParseManager: NSObject {
             return ""
         }
         
-        let filePathString = Bundle.main.path(forResource: bookName!, ofType: "txt")
+        let filePathString = CZTools.fileDocumentFilePath(bookName! + ".txt")
         
+        if filePathString == nil {
+            return ""
+        }
+
         do {
-            return try String(contentsOfFile: filePathString!, encoding: String.Encoding.utf8)
-        } catch {}
+            var contents = try String(contentsOfFile: filePathString!, encoding: String.Encoding.unicode)
+            
+            if contents == "" {
+                contents = try String(contentsOfFile: filePathString!, encoding: String.Encoding.utf8)
+            }
+            
+            return contents
+        } catch let error as NSError {
+            print("读取文件异常：\(error.localizedDescription)")
+        }
         
         return ""
     }
@@ -141,23 +151,53 @@ class BookPageParseManager: NSObject {
     /// - Parameters:
     ///   - bookName: 文件名称
     ///   - completion: 完成回调
-    class func loadBookInfo(_ bookName : String?, completion : (BookInfoModel?)) {
+    class func loadBookInfo(_ bookName : String?, completion : (BookInfoModel?) -> Void) {
         
         if bookName == nil {
-            if completion != nil {
-//                completion(nil)
-            }
+            completion(nil)
             return
         }
         
         let contents = loadLocalFile(bookName)
         
         if contents.count == 0 {
+            completion(nil)
             return
         }
         
-
-        if completion != nil {
+        let dataArray = UserDefaults.iBook.valueFromStore(.books)
+        
+        var bookInfo = BookInfoModel.init()
+        if dataArray == nil {
+            bookInfo.bookId = "gzr"
+            bookInfo.bookName = bookName!
+            bookInfo.location = 0
+            
+            UserDefaults.iBook.store([bookInfo.yy_modelToJSONObject()], for: .books)
+        }else {
+            let books = dataArray as! Array<Dictionary<String, Any>>
+            
+            let bookInfos = books.filter { (bookInfo) -> Bool in
+                let book = BookInfoModel.yy_model(withJSON: bookInfo)
+                
+                if book!.bookId == "gzr" {
+                    return true
+                }
+                
+                return false
+            }
+            
+            if bookInfos.count != 0 {
+                bookInfo = BookInfoModel.yy_model(withJSON: bookInfos.first as Any)!
+            }else {
+                bookInfo.bookId = "gzr"
+                bookInfo.bookName = bookName!
+                bookInfo.location = 0
+                
+                UserDefaults.iBook.store([bookInfo.yy_modelToJSONObject()], for: .books)
+            }
         }
+
+        completion(bookInfo)
     }
 }

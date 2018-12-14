@@ -22,6 +22,9 @@
 		F75C7AF421B505B70010E6AD /* BookChapterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C7AF321B505B70010E6AD /* BookChapterModel.swift */; };
 		F75C7AF621B505CD0010E6AD /* BookContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C7AF521B505CD0010E6AD /* BookContentModel.swift */; };
 		F76AB3B8214B516D00DDD6C9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76AB3B7214B516D00DDD6C9 /* Colors.swift */; };
+		F78F1ECE21C35BEE00A7E9C6 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F78F1ECD21C35BEE00A7E9C6 /* libsqlite3.0.tbd */; };
+		F78F1ED021C39E7C00A7E9C6 /* hello.txt in Resources */ = {isa = PBXBuildFile; fileRef = F78F1ECF21C39E7C00A7E9C6 /* hello.txt */; };
+		F78F1ED221C39F2200A7E9C6 /* CodeZTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78F1ED121C39F2200A7E9C6 /* CodeZTool.swift */; };
 		F7ABF71F21C201E3004716C6 /* NSObject+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ABF71E21C201E3004716C6 /* NSObject+extension.swift */; };
 		F7DC629D214A4939004EF017 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DC629C214A4939004EF017 /* AppDelegate.swift */; };
 		F7DC629F214A4939004EF017 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DC629E214A4939004EF017 /* ViewController.swift */; };
@@ -79,6 +82,9 @@
 		F75C7AF321B505B70010E6AD /* BookChapterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookChapterModel.swift; sourceTree = "<group>"; };
 		F75C7AF521B505CD0010E6AD /* BookContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookContentModel.swift; sourceTree = "<group>"; };
 		F76AB3B7214B516D00DDD6C9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		F78F1ECD21C35BEE00A7E9C6 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		F78F1ECF21C39E7C00A7E9C6 /* hello.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.txt; sourceTree = "<group>"; };
+		F78F1ED121C39F2200A7E9C6 /* CodeZTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeZTool.swift; sourceTree = "<group>"; };
 		F7ABF71E21C201E3004716C6 /* NSObject+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+extension.swift"; sourceTree = "<group>"; };
 		F7DC6299214A4939004EF017 /* SwiftNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7DC629C214A4939004EF017 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F78F1ECE21C35BEE00A7E9C6 /* libsqlite3.0.tbd in Frameworks */,
 				CBA2B6C90246FE3B89070B6F /* Pods_SwiftNote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,6 +143,7 @@
 		929A1F5155B86A7346F13F39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F78F1ECD21C35BEE00A7E9C6 /* libsqlite3.0.tbd */,
 				E7DA2DEDB82BD4A6413F4D85 /* Pods_SwiftNote.framework */,
 			);
 			name = Frameworks;
@@ -237,6 +245,7 @@
 		F7DC629B214A4939004EF017 /* SwiftNote */ = {
 			isa = PBXGroup;
 			children = (
+				F78F1ECF21C39E7C00A7E9C6 /* hello.txt */,
 				F752B4EB21C10D460081A384 /* 蛊真人.txt */,
 				F7E7D3DF21B8FA0400A1F6B9 /* Laboratory */,
 				F75C7AE121B4C1C70010E6AD /* iReader */,
@@ -293,6 +302,7 @@
 				F7F01C6221B1208A00EFAF20 /* UIViewExtension.swift */,
 				F752B4E921C0ECF70081A384 /* UserDefaults+Extension.swift */,
 				F7ABF71E21C201E3004716C6 /* NSObject+extension.swift */,
+				F78F1ED121C39F2200A7E9C6 /* CodeZTool.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -493,6 +503,7 @@
 				F7DC62A7214A493B004EF017 /* LaunchScreen.storyboard in Resources */,
 				F7DC62A4214A493B004EF017 /* Assets.xcassets in Resources */,
 				F7DC62A2214A4939004EF017 /* Main.storyboard in Resources */,
+				F78F1ED021C39E7C00A7E9C6 /* hello.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +580,7 @@
 				F7DC62DF214A6CBD004EF017 /* String+extension.swift in Sources */,
 				F752B4E521C0AD670081A384 /* BookInfoModel.swift in Sources */,
 				F76AB3B8214B516D00DDD6C9 /* Colors.swift in Sources */,
+				F78F1ED221C39F2200A7E9C6 /* CodeZTool.swift in Sources */,
 				F7DC62DA214A6258004EF017 /* MeViewController.swift in Sources */,
 				F7DC62D3214A4BCA004EF017 /* SNTabBarController.swift in Sources */,
 				F7DC62DD214A6A52004EF017 /* EnumHeader.swift in Sources */,

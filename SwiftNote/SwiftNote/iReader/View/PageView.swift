@@ -300,7 +300,7 @@ class PageView: UIView {
                 if self.lastContentModel == nil {
                     return
                 }
-                if abs(0 - self.lastContentView.qnOriginX) > CGFloat(self.scrollDistance) {
+                if abs(self.qnBoundsWidth + self.lastContentView.qnOriginX) > CGFloat(self.scrollDistance) {
                     self.lastContentView.frame = self.bounds
                     self.changeStatus = true
                 }else {

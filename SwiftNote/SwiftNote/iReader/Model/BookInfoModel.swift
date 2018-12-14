@@ -37,6 +37,12 @@ class BookInfoModel: NSObject {
             return nil
         }
         
+        let dataArray = UserDefaults.iBook.valueFromStore(.books) as! Array<Any>
+        
+        if dataArray.count == 0 {
+        }
+        
+
         let bookInfo = BookInfoModel.init()
         
         bookInfo.bookId = "1"
