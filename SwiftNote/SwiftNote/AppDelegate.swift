@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("拷贝文件失败")
         }
         
+        DataBaseManager.sharedInstance.defaultConfiguration()
+        
         return true
     }
 

@@ -21,6 +21,7 @@ private extension String {
 }
 
 extension UIColor {
+    @discardableResult
     /// 导航栏配色
     ///
     /// - Returns: 白色
