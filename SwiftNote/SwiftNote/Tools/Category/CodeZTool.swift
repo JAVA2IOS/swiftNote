@@ -94,12 +94,11 @@ class CZTools: NSObject {
             return false
         }
         
-        let bundlePaths = filePath?.components(separatedBy: "/")
-        if bundlePaths?.count == 0 {
+        let fileName = fileFindFileName(filePath: filePath!)
+        
+        if fileName == nil {
             return false
         }
-        
-        let fileName = bundlePaths!.last
         
         let documentExistedFilePath = fileDocumentPath + "/" + fileName!
 
@@ -118,6 +117,18 @@ class CZTools: NSObject {
         }
         
         return false
+    }
+    
+    /// 从文件路径中获取文件全名
+    ///
+    /// - Parameter filePath: 文件完整路径
+    /// - Returns: 文件名 + 后缀名
+    class func fileFindFileName(filePath : String) -> String? {
+        let rootPaths = filePath.components(separatedBy: "/")
+        
+        let file = rootPaths.last
+        
+        return file
     }
     
     

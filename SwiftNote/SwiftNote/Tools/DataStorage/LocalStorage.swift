@@ -11,6 +11,8 @@ import UIKit
 class LocalStorage: NSObject {
     
     func storageValue() {
+        
+        
     }
-
+    
 }

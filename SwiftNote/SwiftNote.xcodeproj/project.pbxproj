@@ -10,6 +10,7 @@
 		CBA2B6C90246FE3B89070B6F /* Pods_SwiftNote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DA2DEDB82BD4A6413F4D85 /* Pods_SwiftNote.framework */; };
 		F70FE80F21BF90A600796762 /* PageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70FE80E21BF90A600796762 /* PageContainer.swift */; };
 		F713679521C74D7E00BF5DDA /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F713679421C74D7E00BF5DDA /* DataBaseManager.swift */; };
+		F73430DC21C8F3620013A635 /* 诛仙.txt in Resources */ = {isa = PBXBuildFile; fileRef = F73430DB21C8F3620013A635 /* 诛仙.txt */; };
 		F752B4E321C0A6880081A384 /* BookPageParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752B4E221C0A6880081A384 /* BookPageParseManager.swift */; };
 		F752B4E521C0AD670081A384 /* BookInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752B4E421C0AD670081A384 /* BookInfoModel.swift */; };
 		F752B4E821C0EAF10081A384 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752B4E721C0EAF10081A384 /* LocalStorage.swift */; };
@@ -26,6 +27,8 @@
 		F78F1ECE21C35BEE00A7E9C6 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F78F1ECD21C35BEE00A7E9C6 /* libsqlite3.0.tbd */; };
 		F78F1ED021C39E7C00A7E9C6 /* hello.txt in Resources */ = {isa = PBXBuildFile; fileRef = F78F1ECF21C39E7C00A7E9C6 /* hello.txt */; };
 		F78F1ED221C39F2200A7E9C6 /* CodeZTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78F1ED121C39F2200A7E9C6 /* CodeZTool.swift */; };
+		F79098C121C9D5590008A3A8 /* DispatchQueue+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79098C021C9D5590008A3A8 /* DispatchQueue+extension.swift */; };
+		F79098C321CA48650008A3A8 /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79098C221CA48650008A3A8 /* Date+extension.swift */; };
 		F7ABF71F21C201E3004716C6 /* NSObject+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ABF71E21C201E3004716C6 /* NSObject+extension.swift */; };
 		F7DC629D214A4939004EF017 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DC629C214A4939004EF017 /* AppDelegate.swift */; };
 		F7DC629F214A4939004EF017 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DC629E214A4939004EF017 /* ViewController.swift */; };
@@ -71,6 +74,7 @@
 		E7DA2DEDB82BD4A6413F4D85 /* Pods_SwiftNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F70FE80E21BF90A600796762 /* PageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContainer.swift; sourceTree = "<group>"; };
 		F713679421C74D7E00BF5DDA /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		F73430DB21C8F3620013A635 /* 诛仙.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "诛仙.txt"; sourceTree = "<group>"; };
 		F752B4E221C0A6880081A384 /* BookPageParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPageParseManager.swift; sourceTree = "<group>"; };
 		F752B4E421C0AD670081A384 /* BookInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoModel.swift; sourceTree = "<group>"; };
 		F752B4E721C0EAF10081A384 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
@@ -87,6 +91,8 @@
 		F78F1ECD21C35BEE00A7E9C6 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		F78F1ECF21C39E7C00A7E9C6 /* hello.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.txt; sourceTree = "<group>"; };
 		F78F1ED121C39F2200A7E9C6 /* CodeZTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeZTool.swift; sourceTree = "<group>"; };
+		F79098C021C9D5590008A3A8 /* DispatchQueue+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+extension.swift"; sourceTree = "<group>"; };
+		F79098C221CA48650008A3A8 /* Date+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
 		F7ABF71E21C201E3004716C6 /* NSObject+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+extension.swift"; sourceTree = "<group>"; };
 		F7DC6299214A4939004EF017 /* SwiftNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7DC629C214A4939004EF017 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -248,6 +254,7 @@
 		F7DC629B214A4939004EF017 /* SwiftNote */ = {
 			isa = PBXGroup;
 			children = (
+				F73430DB21C8F3620013A635 /* 诛仙.txt */,
 				F78F1ECF21C39E7C00A7E9C6 /* hello.txt */,
 				F752B4EB21C10D460081A384 /* 蛊真人.txt */,
 				F7E7D3DF21B8FA0400A1F6B9 /* Laboratory */,
@@ -306,6 +313,8 @@
 				F752B4E921C0ECF70081A384 /* UserDefaults+Extension.swift */,
 				F7ABF71E21C201E3004716C6 /* NSObject+extension.swift */,
 				F78F1ED121C39F2200A7E9C6 /* CodeZTool.swift */,
+				F79098C021C9D5590008A3A8 /* DispatchQueue+extension.swift */,
+				F79098C221CA48650008A3A8 /* Date+extension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -502,6 +511,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F73430DC21C8F3620013A635 /* 诛仙.txt in Resources */,
 				F752B4EC21C10D470081A384 /* 蛊真人.txt in Resources */,
 				F7DC62A7214A493B004EF017 /* LaunchScreen.storyboard in Resources */,
 				F7DC62A4214A493B004EF017 /* Assets.xcassets in Resources */,
@@ -593,6 +603,7 @@
 				F7F01C6321B1208A00EFAF20 /* UIViewExtension.swift in Sources */,
 				F75C7AEE21B4D5690010E6AD /* HomeCollectionViewCell.swift in Sources */,
 				F70FE80F21BF90A600796762 /* PageContainer.swift in Sources */,
+				F79098C121C9D5590008A3A8 /* DispatchQueue+extension.swift in Sources */,
 				F7ABF71F21C201E3004716C6 /* NSObject+extension.swift in Sources */,
 				F7DC629F214A4939004EF017 /* ViewController.swift in Sources */,
 				F752B4E321C0A6880081A384 /* BookPageParseManager.swift in Sources */,
@@ -600,6 +611,7 @@
 				F75C7AF421B505B70010E6AD /* BookChapterModel.swift in Sources */,
 				F7FF4651214FAFBB0006F939 /* HomeViewController.swift in Sources */,
 				F75C7AF621B505CD0010E6AD /* BookContentModel.swift in Sources */,
+				F79098C321CA48650008A3A8 /* Date+extension.swift in Sources */,
 				F75C7AE921B4CD2B0010E6AD /* HomeModel.swift in Sources */,
 				F7FF464E214F90580006F939 /* SNBaseController.swift in Sources */,
 				F7DC62D7214A5B83004EF017 /* ViewControllerExtension.swift in Sources */,

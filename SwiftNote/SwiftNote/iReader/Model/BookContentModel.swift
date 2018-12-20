@@ -21,6 +21,12 @@ class BookContentModel: NSObject {
     /// 排列顺序
     @objc var characterSort : Int = 0
     
+    /// 是否是最后一页
+    @objc var lastPage : Bool = false
+    
+    /// 是否是第一页
+    @objc var firstPage : Bool = false
+    
     /// 内容文本
     @objc var content : String!
     

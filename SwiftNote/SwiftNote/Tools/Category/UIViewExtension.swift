@@ -77,6 +77,7 @@ extension UIView {
     ///   - corner: 需要添加圆角的方向
     ///   - radius: 圆角角度
     /// - Returns: 圆角
+    @discardableResult
     func qn_addRoundCorner(corner:UIRectCorner, radius:CGFloat)->CAShapeLayer {
         let maskLayer = CAShapeLayer.init()
         let maskPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corner, cornerRadii: CGSize(width: radius, height: radius))

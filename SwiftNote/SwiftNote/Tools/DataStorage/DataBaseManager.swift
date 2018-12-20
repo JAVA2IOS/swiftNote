@@ -9,6 +9,19 @@
 import Foundation
 import SQLite3
 
+/// sql语句的类型
+///
+/// - select: 查询语句
+/// - insert: 插入语句
+/// - update: 更新语句
+/// - delete: 删除语句
+enum SQLTYPE : String {
+    case select = "select"
+    case insert = "insert into"
+    case update = "update"
+    case delete = "delete"
+}
+
 class DataBaseManager: NSObject {
     
     /// 数据库版本
@@ -70,6 +83,9 @@ class DataBaseManager: NSObject {
         sqlite3_close(db)
     }
     
+    
+    // MARK: - sql语句
+    
     @discardableResult
     /// 更新sql语句
     ///
@@ -97,7 +113,7 @@ class DataBaseManager: NSObject {
                 }
                 
                 if sqlite3_exec(db, "ROLLBACK", nil, nil, &err) == SQLITE_OK {
-                    print("回滚事务成功")
+                    print("回滚事务成功 : \(sqlString)")
                 }else {
                     if let error = String(validatingUTF8:sqlite3_errmsg(db)) {
                         print("execute failed to execute  Error: \(error)")
@@ -111,7 +127,7 @@ class DataBaseManager: NSObject {
             sqlite3_free(err)
             
             if sqlite3_exec(db, "ROLLBACK", nil, nil, &err) == SQLITE_OK {
-                print("回滚事务成功")
+                print("回滚事务成功 : \(sqlString)")
             }else {
                 if let error = String(validatingUTF8:sqlite3_errmsg(db)) {
                     print("execute failed to execute  Error: \(error)")
@@ -187,6 +203,66 @@ class DataBaseManager: NSObject {
         
         return nil
     }
+    
+    @discardableResult
+    class func excuteSqlString(type : SQLTYPE, table : String, columns : String?, values : String, parameters : String?) -> String? {
+        switch type {
+        case .select:
+            return querySqlString(table: table, columns: columns, parameters: parameters)
+        case .insert:
+            return insertSqlString(table: table, columns: columns, values: values)
+        case .update:
+            return updateSqlString(table: table, columns: columns!, parameters: parameters)
+        case .delete:
+            return deleteSqlString(table: table, parameters: parameters)
+        }
+    }
+    
+    class func querySqlString(table : String, columns : String?, parameters : String?) -> String {
+        var sqlString = "\(SQLTYPE.select.rawValue) \(columns == nil ? "*" : columns!) from \(table)"
+        sqlString += parameters == nil ? ";" : " where \(parameters!);"
+        return sqlString
+    }
+    
+    /// 插入sql语句
+    ///
+    /// - Parameters:
+    ///   - table: 表名
+    ///   - columns: 列名
+    ///   - values: 插入的数据
+    /// - Returns: insert into table values(value1, value2, ...)
+    class func insertSqlString(table : String, columns : String?, values : String) -> String {
+        var sqlString = "\(SQLTYPE.insert.rawValue) \(table) \(columns == nil ? "" : "(\(columns!))")"
+        sqlString += " values(\(values));"
+        return sqlString
+    }
+    
+    /// 更新sql语句
+    ///
+    /// - Parameters:
+    ///   - table: 表名
+    ///   - columns: 更新的列
+    ///   - parameters: 参数过滤条件
+    /// - Returns: update table set columns.... where
+    class func updateSqlString(table : String, columns : String, parameters : String?) -> String {
+        var sqlString = "\(SQLTYPE.update.rawValue) \(table) set \(columns)"
+        sqlString += parameters == nil ? ";" : " where \(parameters!);"
+        
+        return sqlString
+    }
+    
+    /// 删除语句
+    ///
+    /// - Parameters:
+    ///   - table: 表名
+    ///   - parameters: 参数
+    /// - Returns: 完整的删除sql语句
+    class func deleteSqlString(table : String, parameters : String?) -> String {
+        var sqlString = "\(SQLTYPE.delete.rawValue) from \(table)"
+        sqlString += parameters == nil ? ";" : " where \(parameters!);"
+        
+        return sqlString
+    }
 }
 
 
@@ -197,6 +273,9 @@ enum DataBaseVersion : Int {
 }
 
 extension DataBaseManager {
+    
+    // MARK: 数据库配置
+    
     /// 默认配置，包括数据库初始化以及数据库迁移
     func defaultConfiguration() -> Void {
         configureDataBaseVersion { (dataBase, schemaVersion) in
@@ -258,7 +337,8 @@ extension DataBaseManager {
             "font integer NOT NULL DEFAULT(16)," +
             "fontName varchar(255) NOT NULL DEFAULT('ArialMT')," +
             "lineSpacing integer NOT NULL DEFAULT(16)," +
-            "color varchar(255) NOT NULL DEFAULT('878D94')" +
+            "color varchar(255) NOT NULL DEFAULT('878D94')," +
+            "styleType integer NOT NULL DEFAULT(0)" +
             ");") {
             return false
         }
@@ -284,11 +364,27 @@ extension DataBaseManager {
             return false
         }
         
-        // 插入样式数据
-        if !excuteSql("INSERT INTO BookStyle (font, fontName, lineSpacing, color) VALUES (16, 'ArialMT', 16, '878D94');") {
-            return false
-        }
-        
+        print("初始化版本")
         return true
     }
+}
+
+protocol DataBaseProtocol {
+    
+    /// 更新模型对象
+    ///
+    /// - Returns: 更新是否成功
+    func save() -> Bool
+    
+    /// 根据主键来获取实例
+    ///
+    /// - Parameter primaryKey: 主键
+    /// - Returns: 实例对象
+    func instanceForPrimaryKey(_ primaryKey : Any) -> Any?
+    
+    /// 根据sql获取实例数组
+    ///
+    /// - Parameter sql: sql语句
+    /// - Returns: 实例数组
+    func modelsWithSql(_ sql : String) -> Array<Any>?
 }
