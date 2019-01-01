@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F48C19B21DA404A009BF2CD /* CZScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48C19A21DA404A009BF2CD /* CZScrollViewController.swift */; };
+		2F48C19D21DA434D009BF2CD /* CZChildScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48C19C21DA434D009BF2CD /* CZChildScrollView.swift */; };
+		2F48C19F21DA438B009BF2CD /* CZTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48C19E21DA438B009BF2CD /* CZTableCellTableViewCell.swift */; };
+		2F48C1A121DA467D009BF2CD /* CZTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F48C1A021DA467D009BF2CD /* CZTable.swift */; };
+		2FCCF2AE21C40ED60061D9FF /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCCF2AD21C40ED60061D9FF /* Constant.swift */; };
 		CBA2B6C90246FE3B89070B6F /* Pods_SwiftNote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DA2DEDB82BD4A6413F4D85 /* Pods_SwiftNote.framework */; };
 		F70FE80F21BF90A600796762 /* PageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70FE80E21BF90A600796762 /* PageContainer.swift */; };
 		F752B4E321C0A6880081A384 /* BookPageParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752B4E221C0A6880081A384 /* BookPageParseManager.swift */; };
@@ -23,7 +28,6 @@
 		F75C7AF621B505CD0010E6AD /* BookContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75C7AF521B505CD0010E6AD /* BookContentModel.swift */; };
 		F76AB3B8214B516D00DDD6C9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76AB3B7214B516D00DDD6C9 /* Colors.swift */; };
 		F78F1ECE21C35BEE00A7E9C6 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F78F1ECD21C35BEE00A7E9C6 /* libsqlite3.0.tbd */; };
-		F78F1ED021C39E7C00A7E9C6 /* hello.txt in Resources */ = {isa = PBXBuildFile; fileRef = F78F1ECF21C39E7C00A7E9C6 /* hello.txt */; };
 		F78F1ED221C39F2200A7E9C6 /* CodeZTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78F1ED121C39F2200A7E9C6 /* CodeZTool.swift */; };
 		F7ABF71F21C201E3004716C6 /* NSObject+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ABF71E21C201E3004716C6 /* NSObject+extension.swift */; };
 		F7DC629D214A4939004EF017 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DC629C214A4939004EF017 /* AppDelegate.swift */; };
@@ -66,6 +70,11 @@
 
 /* Begin PBXFileReference section */
 		0D0B55336D5E9670FCDC7FEA /* Pods-SwiftNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNote.debug.xcconfig"; path = "Target Support Files/Pods-SwiftNote/Pods-SwiftNote.debug.xcconfig"; sourceTree = "<group>"; };
+		2F48C19A21DA404A009BF2CD /* CZScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CZScrollViewController.swift; sourceTree = "<group>"; };
+		2F48C19C21DA434D009BF2CD /* CZChildScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CZChildScrollView.swift; sourceTree = "<group>"; };
+		2F48C19E21DA438B009BF2CD /* CZTableCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CZTableCellTableViewCell.swift; sourceTree = "<group>"; };
+		2F48C1A021DA467D009BF2CD /* CZTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CZTable.swift; sourceTree = "<group>"; };
+		2FCCF2AD21C40ED60061D9FF /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		E6D775AE67A1B30937323037 /* Pods-SwiftNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNote.release.xcconfig"; path = "Target Support Files/Pods-SwiftNote/Pods-SwiftNote.release.xcconfig"; sourceTree = "<group>"; };
 		E7DA2DEDB82BD4A6413F4D85 /* Pods_SwiftNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F70FE80E21BF90A600796762 /* PageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContainer.swift; sourceTree = "<group>"; };
@@ -83,7 +92,6 @@
 		F75C7AF521B505CD0010E6AD /* BookContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookContentModel.swift; sourceTree = "<group>"; };
 		F76AB3B7214B516D00DDD6C9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		F78F1ECD21C35BEE00A7E9C6 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		F78F1ECF21C39E7C00A7E9C6 /* hello.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.txt; sourceTree = "<group>"; };
 		F78F1ED121C39F2200A7E9C6 /* CodeZTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeZTool.swift; sourceTree = "<group>"; };
 		F7ABF71E21C201E3004716C6 /* NSObject+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+extension.swift"; sourceTree = "<group>"; };
 		F7DC6299214A4939004EF017 /* SwiftNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,7 +253,6 @@
 		F7DC629B214A4939004EF017 /* SwiftNote */ = {
 			isa = PBXGroup;
 			children = (
-				F78F1ECF21C39E7C00A7E9C6 /* hello.txt */,
 				F752B4EB21C10D460081A384 /* 蛊真人.txt */,
 				F7E7D3DF21B8FA0400A1F6B9 /* Laboratory */,
 				F75C7AE121B4C1C70010E6AD /* iReader */,
@@ -303,6 +310,7 @@
 				F752B4E921C0ECF70081A384 /* UserDefaults+Extension.swift */,
 				F7ABF71E21C201E3004716C6 /* NSObject+extension.swift */,
 				F78F1ED121C39F2200A7E9C6 /* CodeZTool.swift */,
+				2FCCF2AD21C40ED60061D9FF /* Constant.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -359,6 +367,7 @@
 		F7E7D3E021B8FA2200A1F6B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2F48C19A21DA404A009BF2CD /* CZScrollViewController.swift */,
 				F7E7D3E121B8FA6500A1F6B9 /* OverLayViewController.swift */,
 			);
 			path = ViewController;
@@ -368,6 +377,9 @@
 			isa = PBXGroup;
 			children = (
 				F7E7D3E421B8FB8200A1F6B9 /* OverLayFlowLayout.swift */,
+				2F48C19C21DA434D009BF2CD /* CZChildScrollView.swift */,
+				2F48C19E21DA438B009BF2CD /* CZTableCellTableViewCell.swift */,
+				2F48C1A021DA467D009BF2CD /* CZTable.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -463,6 +475,29 @@
 					F7DC6298214A4939004EF017 = {
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1010;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+							com.apple.HealthKit = {
+								enabled = 0;
+							};
+							com.apple.HomeKit = {
+								enabled = 0;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					F7DC62AC214A493C004EF017 = {
 						CreatedOnToolsVersion = 10.0;
@@ -503,7 +538,6 @@
 				F7DC62A7214A493B004EF017 /* LaunchScreen.storyboard in Resources */,
 				F7DC62A4214A493B004EF017 /* Assets.xcassets in Resources */,
 				F7DC62A2214A4939004EF017 /* Main.storyboard in Resources */,
-				F78F1ED021C39E7C00A7E9C6 /* hello.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,9 +616,11 @@
 				F76AB3B8214B516D00DDD6C9 /* Colors.swift in Sources */,
 				F78F1ED221C39F2200A7E9C6 /* CodeZTool.swift in Sources */,
 				F7DC62DA214A6258004EF017 /* MeViewController.swift in Sources */,
+				2F48C1A121DA467D009BF2CD /* CZTable.swift in Sources */,
 				F7DC62D3214A4BCA004EF017 /* SNTabBarController.swift in Sources */,
 				F7DC62DD214A6A52004EF017 /* EnumHeader.swift in Sources */,
 				F7DC62CF214A49A7004EF017 /* ImportHeader.swift in Sources */,
+				2F48C19B21DA404A009BF2CD /* CZScrollViewController.swift in Sources */,
 				F7E7D3E521B8FB8200A1F6B9 /* OverLayFlowLayout.swift in Sources */,
 				F7F01C6321B1208A00EFAF20 /* UIViewExtension.swift in Sources */,
 				F75C7AEE21B4D5690010E6AD /* HomeCollectionViewCell.swift in Sources */,
@@ -594,16 +630,19 @@
 				F752B4E321C0A6880081A384 /* BookPageParseManager.swift in Sources */,
 				F75C7AE321B4C2190010E6AD /* BookReaderViewController.swift in Sources */,
 				F75C7AF421B505B70010E6AD /* BookChapterModel.swift in Sources */,
+				2FCCF2AE21C40ED60061D9FF /* Constant.swift in Sources */,
 				F7FF4651214FAFBB0006F939 /* HomeViewController.swift in Sources */,
 				F75C7AF621B505CD0010E6AD /* BookContentModel.swift in Sources */,
 				F75C7AE921B4CD2B0010E6AD /* HomeModel.swift in Sources */,
 				F7FF464E214F90580006F939 /* SNBaseController.swift in Sources */,
+				2F48C19F21DA438B009BF2CD /* CZTableCellTableViewCell.swift in Sources */,
 				F7DC62D7214A5B83004EF017 /* ViewControllerExtension.swift in Sources */,
 				F75C7AEB21B4CD3D0010E6AD /* HomeViewModel.swift in Sources */,
 				F7DC629D214A4939004EF017 /* AppDelegate.swift in Sources */,
 				F7E7D3E821B91FB000A1F6B9 /* PageView.swift in Sources */,
 				F752B4E821C0EAF10081A384 /* LocalStorage.swift in Sources */,
 				F75C7AF221B4FDB00010E6AD /* BookPageViewController.swift in Sources */,
+				2F48C19D21DA434D009BF2CD /* CZChildScrollView.swift in Sources */,
 				F752B4EA21C0ECF70081A384 /* UserDefaults+Extension.swift in Sources */,
 				F7E7D3E221B8FA6500A1F6B9 /* OverLayViewController.swift in Sources */,
 			);
@@ -782,9 +821,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UVQ9545ZP3;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = SwiftNote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -792,7 +833,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = CodeZ.SwiftNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -802,9 +843,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UVQ9545ZP3;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = SwiftNote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -812,7 +855,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = CodeZ.SwiftNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

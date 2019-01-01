@@ -76,6 +76,9 @@ class HomeViewController: SNBaseController, UICollectionViewDelegate, UICollecti
         case .news:
             self.pushChildController(controllerName: NSStringFromClass(OverLayViewController.self))
             break
+        case .demo:
+            self.pushChildController(controllerName: NSStringFromClass(CZScrollViewController.self))
+            break
         }
         
     }

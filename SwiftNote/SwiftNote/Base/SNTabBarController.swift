@@ -21,14 +21,18 @@ class SNTabBarController: UITabBarController {
         let homeNav = self.configureChildViewController(controllerName: NSStringFromClass(HomeViewController.self), tabBarTitle: "首页")
         let meNav = self.configureChildViewController(controllerName: NSStringFromClass(MeViewController.self), tabBarTitle: "我的")
         self.viewControllers = [homeNav, meNav]
-        homeNav.tabBarItem = UITabBarItem.init(title: "赚钱", image: UIImage.init(named: HomeImage), selectedImage: UIImage(named: HomeSelectImage))
+        homeNav.tabBarItem = UITabBarItem.init(title: "首页", image: UIImage.init(named: HomeImage), selectedImage: UIImage(named: HomeSelectImage))
         meNav.tabBarItem = UITabBarItem.init(title: "我的", image: UIImage.init(named: MeImage), selectedImage: UIImage(named: MeSelectImage))
         
         self.tabBar.backgroundColor = UIColor.TabBarBackgroundColor()
         self.tabBar.shadowImage = UIImage.init()
         self.tabBar.backgroundImage = UIImage.init()
         self.tabBar.tintColor = UIColor.TabBarItemSelectColor()
-        self.tabBar.unselectedItemTintColor = UIColor.TabBarItemUnselectColor()
+        if #available(iOS 10.0, *) {
+            self.tabBar.unselectedItemTintColor = UIColor.TabBarItemUnselectColor()
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     /// 配置tabBar的基本子视图控制器

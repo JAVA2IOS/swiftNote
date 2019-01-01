@@ -17,6 +17,7 @@ enum HomePage {
     case none
     case iBook
     case news
+    case demo
 }
 
 /// 首页ViewModel
@@ -33,8 +34,8 @@ class HomeViewModel: NSObject {
 
     class func configureHomeDataSource() -> Array<HomeViewModel> {
         var modelArray = [HomeViewModel]()
-        let titleArray = ["电子书", "新闻"]
-        let pageArray = [HomePage.iBook, HomePage.news]
+        let titleArray = ["电子书", "新闻", "demo"]
+        let pageArray = [HomePage.iBook, HomePage.news, HomePage.demo]
         
         for i in 0..<titleArray.count {
             let tmpViewModel = HomeViewModel.init()
