@@ -8,6 +8,19 @@
 
 import Foundation
 
+enum systemVariableName {
+    case bundleIdentity
+    case bundleDisplayName
+    case appVersion
+    case iOSVersion
+    case systemName
+    case systemModel
+    case systemModelName
+    case systemUUid
+    case systemIDFA
+    case phoneName
+}
+
 /// 工具类
 class CZTools: NSObject {
     
@@ -81,12 +94,11 @@ class CZTools: NSObject {
             return false
         }
         
-        let bundlePaths = filePath?.components(separatedBy: "/")
-        if bundlePaths?.count == 0 {
+        let fileName = fileFindFileName(filePath: filePath!)
+        
+        if fileName == nil {
             return false
         }
-        
-        let fileName = bundlePaths!.last
         
         let documentExistedFilePath = fileDocumentPath + "/" + fileName!
 
@@ -107,4 +119,106 @@ class CZTools: NSObject {
         return false
     }
     
+    /// 从文件路径中获取文件全名
+    ///
+    /// - Parameter filePath: 文件完整路径
+    /// - Returns: 文件名 + 后缀名
+    class func fileFindFileName(filePath : String) -> String? {
+        let rootPaths = filePath.components(separatedBy: "/")
+        
+        let file = rootPaths.last
+        
+        return file
+    }
+    
+    
+    // MARK: - 系统变量
+    
+    /// bundleId
+    class var systemBundleIdentifier : String {
+        get {
+            return systemVariable(.bundleIdentity)!
+        }
+    }
+    
+    /// bundleName
+    class var systemBundleName: String {
+        get {
+            return systemVariable(.bundleDisplayName)!
+        }
+    }
+    
+    /// app版本号
+    class var appVersion: String {
+        get {
+            return systemVariable(.appVersion)!
+        }
+    }
+    
+    /// iOS系统版本号
+    class var iOSVersion : String {
+        get {
+            return systemVariable(.iOSVersion)!
+        }
+    }
+    
+    /// 系统名称 iOS
+    class var systemName : String {
+        get {
+            return systemVariable(.systemName)!
+        }
+    }
+    
+    /// 系统设备名称  e.g "iphone 6"
+    class var systemModel : String {
+        get {
+            return systemVariable(.systemModel)!
+        }
+    }
+    
+    /// uuid
+    class var systemUUID : String {
+        get {
+            return systemVariable(.systemUUid)!
+        }
+    }
+    
+    /// 系统广告id
+    class var systemIDFA : String {
+        get {
+            return systemVariable(.systemIDFA)!
+        }
+    }
+    
+    /// 手机名称 e.g "my iphne"
+    class var phoneName : String {
+        get {
+            return systemVariable(.phoneName)!
+        }
+    }
+    
+    class func systemVariable(_ systemType : systemVariableName) -> String? {
+        switch systemType {
+        case .appVersion:
+            return Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
+        case .bundleIdentity:
+            return Bundle.main.bundleIdentifier
+        case .bundleDisplayName:
+            return Bundle.main.infoDictionary!["CFBundleDisplayName"] as? String
+        case .iOSVersion:
+            return UIDevice.current.systemVersion
+        case .systemName:
+            return UIDevice.current.systemName
+        case .systemModel:
+            return UIDevice.current.model
+        case .systemModelName:
+            return UIDevice.current.model
+        case .systemUUid:
+            return UIDevice.current.identifierForVendor?.uuidString
+        case .systemIDFA:
+            return UIDevice.current.identifierForVendor?.uuidString
+        case .phoneName:
+            return UIDevice.current.name
+        }
+    }
 }

@@ -59,9 +59,9 @@ class PageContainer: UIView {
     private func getTextContent(_ bookModel : BookContentModel?) -> NSMutableAttributedString {
         let parseStyle = BookPageParseManager.sharedInstance
         let paragraphStyle = NSMutableParagraphStyle.init()
-        paragraphStyle.lineSpacing = CGFloat(parseStyle.lineSpaceing)
-        paragraphStyle.paragraphSpacing = CGFloat(parseStyle.lineSpaceing)
-        paragraphStyle.firstLineHeadIndent = CGFloat(parseStyle.lineSpaceing) * 2 // 首行缩进
+        paragraphStyle.lineSpacing = CGFloat(parseStyle.lineSpacing)
+        paragraphStyle.paragraphSpacing = CGFloat(parseStyle.lineSpacing)
+        paragraphStyle.firstLineHeadIndent = CGFloat(parseStyle.lineSpacing) * 2 // 首行缩进
         let font = UIFont(name: "ArialMT", size: CGFloat(parseStyle.font))
         
         

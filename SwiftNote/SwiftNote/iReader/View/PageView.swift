@@ -64,6 +64,9 @@ class PageView: UIView {
     /// 当前数据源
     var currentContentModel : BookContentModel?
     
+    /// 当前章节列表
+    var currentChapterModel : BookChapterModel?
+    
     /// 是否开启动画效果
     var animated = true
     
@@ -198,6 +201,38 @@ class PageView: UIView {
     /// 配置下一页数据
     private func configureNextPageData() {
         nextContentModel = pageDelegate?.pageViewDataSourceTurnNextPage(currentContentModel) ?? nil
+    }
+    
+    // 下一页数据
+    private func netxPage() {
+        
+        if currentChapterModel == nil {
+            return
+        }
+        
+        // 如果是最后一章了，不动
+        if currentChapterModel!.lastChapter {
+            return
+        }
+        
+        if currentContentModel == nil {
+            return
+        }
+        
+        // 如果是最后一页，获取下一章节的数据
+        if currentContentModel!.lastPage {
+            // 设置当前章节，然后再设置当前第一页
+            /*
+             ...
+             */
+            currentContentModel = currentChapterModel!.contentModels!.first
+        }else {
+            let nextPage = currentContentModel!.characterSort + 1
+            
+            currentContentModel = currentChapterModel!.contentModels![nextPage]
+        }
+        
+        
     }
     
     /// 配置上一页数据
