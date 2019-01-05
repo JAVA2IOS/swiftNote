@@ -22,7 +22,7 @@ class CZTable: UITableView, UITableViewDelegate, UITableViewDataSource, UIGestur
     
     var currentPoint : CGPoint!
     
-    var distance : CGFloat = 20
+    var distance : CGFloat = 0
     
     
 
@@ -114,8 +114,8 @@ class CZTable: UITableView, UITableViewDelegate, UITableViewDataSource, UIGestur
         if !canScroll {
             print("外部：不能滑\(scrollView.contentOffset.y)")
             scrollView.contentOffset = currentPoint
-//            scrollView.isScrollEnabled = false
-//            scrollView.isScrollEnabled = true
+            scrollView.isScrollEnabled = false
+            scrollView.isScrollEnabled = true
         }else {
             print("外部：可以滑动")
             currentPoint = scrollView.contentOffset
