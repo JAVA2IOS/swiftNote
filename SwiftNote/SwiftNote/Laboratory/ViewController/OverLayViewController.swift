@@ -12,7 +12,7 @@ import UIKit
 class OverLayViewController: SNBaseController, UICollectionViewDelegate, UICollectionViewDataSource {
     let defaultReuseIdentifier = "cz_defaultReuseIdentifier"
     let defaultHeaderReuseIdentifier = "cz_defaultHeaderReuseIdentifer"
-    var targetY : CGFloat!
+    var targetY : CGFloat! = 0
     
     var collectionView : UICollectionView! = nil
     
@@ -44,15 +44,6 @@ class OverLayViewController: SNBaseController, UICollectionViewDelegate, UIColle
         
         self.view.addSubview(collectionView)
     }
-    
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize
-//    {
-//        if section == 4 {
-////            targetY = collectionView
-////            collectionViewLayout.rect
-//        }
-//        return CGSize(width: 0, height: 50)
-//    }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
@@ -72,6 +63,9 @@ class OverLayViewController: SNBaseController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: defaultHeaderReuseIdentifier, for: indexPath)
         view.backgroundColor = .randomColor
+        if indexPath.section == 4 {
+            targetY = view.qnOriginY;
+        }
         
         return view
         
@@ -82,13 +76,17 @@ class OverLayViewController: SNBaseController, UICollectionViewDelegate, UIColle
             let collectionView = scrollView as! UICollectionView
             let indexPaths = collectionView.indexPathsForVisibleItems
             
-            print(indexPaths)
-            
             let firstIndexPath = indexPaths.first
-            if firstIndexPath != nil {
-                collectionLayout.sectionHeadersPinToVisibleBounds = firstIndexPath!.section >= 4 ? true : false
-            }
             
+            let currentY = scrollView.contentOffset.y
+
+            if firstIndexPath != nil {
+                let targetIndexPath = IndexPath(row: 0, section: 4)
+                let headerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: targetIndexPath)
+                if headerView != nil {
+                    collectionLayout.sectionHeadersPinToVisibleBounds = currentY >= targetY ? true : false
+                }
+            }
         }
     }
 
